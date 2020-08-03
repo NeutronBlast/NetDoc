@@ -25,11 +25,11 @@
         <v-menu offset-y transition="scale-transition" :close-on-content-click="false">
             <template v-slot:activator="{ on, attrs }">
                 <v-btn icon v-on="on" v-bind="attrs">
-                    <v-badge color="red" :content="1" v-if="isNotRead">
+                    <v-badge color="red" :content="nunreads" v-if="nunreads > 0">
                         <v-icon>mdi-message</v-icon>
                     </v-badge>
 
-                    <v-btn icon class="ml-2" v-else>
+                    <v-btn icon v-else>
                         <v-icon>mdi-message</v-icon>
                     </v-btn>
                 </v-btn>
@@ -40,45 +40,32 @@
 
                 <v-list>
                     <v-subheader>MENSAJES</v-subheader>
-                    <v-list-item-group>
-                        <v-list-item v-bind:class="{netmsjunread: isNotRead}">
+                    <v-list-item-group v-for="(item, index) in msg" v-bind:key="index">
+                        <v-list-item v-bind:class="{netmsjunread: item.isNotRead}">
                             <v-list-item-avatar class="mt-3">
-                                <v-img src="@/assets/img/stock-4.jpg"></v-img>
+                                <v-img :src="require('@/assets/img/'+item.avatar)"></v-img>
                             </v-list-item-avatar>
 
                             <v-list-item-content>
-                                <v-list-item-title>John Willard</v-list-item-title>
-                                <v-list-item-subtitle class="mt-n1">Everything changes when you make it out alive</v-list-item-subtitle>
-                            </v-list-item-content>
-                        </v-list-item>
+                                <v-list-item-title>{{item.person}}
+                                    <v-tooltip bottom>
+                                        <template v-slot:activator="{ on, attrs }">
+                                            <v-btn icon class="mr-2" v-bind="attrs" v-on="on">
+                                                <v-icon @click="item.isNotRead = !item.isNotRead">{{message(item.isNotRead).icon}}</v-icon>
+                                            </v-btn>
 
-                        <v-list-item>
-                            <v-list-item-avatar class="mt-3">
-                                <v-img src="@/assets/img/stock-5.jpg"></v-img>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <v-list-item-title>Midori Pavlichenko</v-list-item-title>
-                                <v-list-item-subtitle class="mt-n1">What's the first thing you say when you're about to do something irresponsible?</v-list-item-subtitle>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-list-item>
-                            <v-list-item-avatar class="mt-3">
-                                <v-img src="@/assets/img/stock-6.jpg"></v-img>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <v-list-item-title>Thomas Legend</v-list-item-title>
-                                <v-list-item-subtitle class="mt-n1">Never had a doubt that I wanna make changes
-                                </v-list-item-subtitle>
+                                        </template>
+                                        <span>{{message(item.isNotRead).tooltip}}</span>
+                                    </v-tooltip>
+                                </v-list-item-title>
+                                <v-list-item-subtitle class="mt-n1">{{item.message}}</v-list-item-subtitle>
                             </v-list-item-content>
                         </v-list-item>
                     </v-list-item-group>
                 </v-list>
 
                 <v-card-actions>
-                    <v-btn text small @click="unread()">Marcar todo como leído</v-btn>
+                    <v-btn text small @click="allRead()">Marcar todo como leído</v-btn>
                     <v-spacer></v-spacer>
 
                     <v-btn text small>Ver todo</v-btn>
@@ -208,8 +195,25 @@ import {
 export default {
     data() {
         return {
-            isNotRead: true,
-            unreads: 3
+            msg: [{
+                    avatar: 'stock-4.jpg',
+                    person: 'John Willard',
+                    message: 'Everything changes when you make it out alive',
+                    isNotRead: true
+                },
+                {
+                    avatar: 'stock-5.jpg',
+                    person: 'Midori Pavlichenko',
+                    message: "What's the first thing you say when you're about to do something irresponsible?",
+                    isNotRead: false
+                },
+                {
+                    avatar: 'stock-6.jpg',
+                    person: 'Little Pluto',
+                    message: "Never had a doubt that I wanna make changes",
+                    isNotRead: false
+                }
+            ],
         }
     },
     methods: {
@@ -217,7 +221,38 @@ export default {
 
         unread() {
             this.isNotRead = false;
-            this.unreads = 0;
+        },
+
+        read() {
+            this.isNotRead = true;
+        },
+
+        message(isNotRead) {
+            var option = {
+                icon: 'mdi-email-mark-as-unread',
+                tooltip: 'Marcar como no leído'
+            };
+
+            if (isNotRead == true) {
+                option.icon = 'mdi-read';
+                option.tooltip = 'Marcar como leído'
+
+            } else {
+                option.icon = 'mdi-email-mark-as-unread';
+                option.tooltip = 'Marcar como no leído';
+            }
+            return option;
+        },
+
+        msgState(obj) {
+            return (obj.isNotRead == true);
+        },
+
+        allRead() {
+            var i, n = this.msg.length;
+            for (i = 0; i < n; ++i) {
+                this.msg[i].isNotRead = false;
+            }
         }
     },
     computed: {
@@ -234,6 +269,10 @@ export default {
             (this.mode == 1) ? user.username = 'NeutronBlast': user.username = 'EternalGrey';
             (this.mode == 1) ? user.pfp = 'stock-1.jpg': user.pfp = 'stock-3.jpg';
             return user;
+        },
+
+        nunreads() {
+            return this.msg.filter(this.msgState).length;
         }
     }
 }
