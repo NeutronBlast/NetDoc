@@ -1,8 +1,240 @@
 <template>
 <div>
-    <v-app-bar color="teal lighten-3" height="60px">
-        <a href="/" class="brand-logo mt-2">
-            <img src="@/assets/logo.png" class="responsive-img mt-2" width="85px" height="85px" />
-        </a>
+    <v-app-bar height="60px" src="@/assets/img/stock-2.jpeg">
+
+        <!-- Logo -->
+        <v-app-bar-nav-icon class="d-none d-sm-flex">
+            <v-img class="ml-9" src="@/assets/img/logo-3.png" height="70px" width="70px">
+            </v-img>
+        </v-app-bar-nav-icon>
+
+        <!-- Right side of the bar -->
+        <v-spacer></v-spacer>
+
+        <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn icon class="mr-2" v-bind="attrs" v-on="on">
+                    <v-icon>mdi-account-group</v-icon>
+                </v-btn>
+
+            </template>
+            <span>Grupos</span>
+        </v-tooltip>
+
+        <!-- Messages -->
+        <v-menu offset-y transition="scale-transition" :close-on-content-click="false">
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn icon v-on="on" v-bind="attrs">
+                    <v-badge color="red" :content="1" v-if="isNotRead">
+                        <v-icon>mdi-message</v-icon>
+                    </v-badge>
+
+                    <v-btn icon class="ml-2" v-else>
+                        <v-icon>mdi-message</v-icon>
+                    </v-btn>
+                </v-btn>
+            </template>
+
+            <!-- Views -->
+            <v-card class="mx-auto" max-width="400" outlined>
+
+                <v-list>
+                    <v-subheader>MENSAJES</v-subheader>
+                    <v-list-item-group>
+                        <v-list-item v-bind:class="{netmsjunread: isNotRead}">
+                            <v-list-item-avatar class="mt-3">
+                                <v-img src="@/assets/img/stock-4.jpg"></v-img>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title>John Willard</v-list-item-title>
+                                <v-list-item-subtitle class="mt-n1">Everything changes when you make it out alive</v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item>
+                            <v-list-item-avatar class="mt-3">
+                                <v-img src="@/assets/img/stock-5.jpg"></v-img>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title>Midori Pavlichenko</v-list-item-title>
+                                <v-list-item-subtitle class="mt-n1">What's the first thing you say when you're about to do something irresponsible?</v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item>
+                            <v-list-item-avatar class="mt-3">
+                                <v-img src="@/assets/img/stock-6.jpg"></v-img>
+                            </v-list-item-avatar>
+
+                            <v-list-item-content>
+                                <v-list-item-title>Thomas Legend</v-list-item-title>
+                                <v-list-item-subtitle class="mt-n1">Never had a doubt that I wanna make changes
+                                </v-list-item-subtitle>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list-item-group>
+                </v-list>
+
+                <v-card-actions>
+                    <v-btn text small @click="unread()">Marcar todo como leído</v-btn>
+                    <v-spacer></v-spacer>
+
+                    <v-btn text small>Ver todo</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-menu>
+
+        <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn icon class="mr-2" v-bind="attrs" v-on="on">
+                    <v-icon>mdi-help</v-icon>
+                </v-btn>
+
+            </template>
+            <span>Ayuda</span>
+        </v-tooltip>
+
+        <!-- Avatar -->
+        <v-menu offset-y transition="scale-transition">
+            <template v-slot:activator="{ on, attrs }">
+                <div v-on="on" v-bind="attrs">
+                    <v-list-item>
+                        <v-list-item-avatar>
+                            <img :src="require('@/assets/img/'+info.pfp)">
+                        </v-list-item-avatar>
+
+                        <v-list-item-content class="d-none d-sm-flex mr-n16">
+                            <v-list-item-title>{{info.name}}</v-list-item-title>
+                            <v-list-item-subtitle>{{info.username}}</v-list-item-subtitle>
+                        </v-list-item-content>
+
+                    </v-list-item>
+
+                </div>
+            </template>
+
+            <!-- Views -->
+            <v-list>
+                <v-subheader v-if="mode == 1">VISTAS (MÉDICO)</v-subheader>
+                <v-subheader v-else>VISTAS (PACIENTE)</v-subheader>
+
+                <v-list-item-group color="teal">
+                    <v-list-item>
+                        <v-icon left color="cyan darken-4">mdi-login</v-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Login</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <v-icon left color="cyan darken-4">mdi-account-plus</v-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Registro</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <v-icon left color="cyan darken-4">mdi-lock</v-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Recuperación</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-divider></v-divider>
+
+                    <v-list-item>
+                        <v-icon left color="cyan darken-4">mdi-account</v-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Perfil</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+
+                    <v-list-item>
+                        <v-icon left color="cyan darken-4">mdi-tools</v-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Configuración</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+
+                    <!-- Exclusive views -->
+                    <div v-if="mode == 1">
+                        <v-divider></v-divider>
+                        <v-list-item>
+                            <v-icon left color="cyan darken-4">mdi-account-search</v-icon>
+                            <v-list-item-content>
+                                <v-list-item-title>Investigaciones</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item>
+                            <v-icon left color="cyan darken-4">mdi-medical-bag</v-icon>
+                            <v-list-item-content>
+                                <v-list-item-title>Pacientes</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </div>
+
+                    <div v-else>
+                        <v-divider></v-divider>
+                        <v-list-item>
+                            <v-icon left color="cyan darken-4">mdi-hospital</v-icon>
+                            <v-list-item-content>
+                                <v-list-item-title>Clínicas</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </div>
+
+                    <v-divider></v-divider>
+                    <v-list-item>
+                        <v-icon left color="cyan darken-4">mdi-bandage</v-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Enfermedades</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-menu>
     </v-app-bar>
 </div>
+</template>
+
+<script>
+import {
+    mapState,
+    mapMutations
+} from "vuex";
+
+export default {
+    data() {
+        return {
+            isNotRead: true,
+            unreads: 3
+        }
+    },
+    methods: {
+        ...mapMutations(['setMode']),
+
+        unread() {
+            this.isNotRead = false;
+            this.unreads = 0;
+        }
+    },
+    computed: {
+        ...mapState(["mode"]),
+
+        info() {
+            var user = {
+                name: '',
+                username: '',
+                pfp: '',
+            };
+
+            (this.mode == 1) ? user.name = 'Frank Hesse': user.name = 'Leo Barnes';
+            (this.mode == 1) ? user.username = 'NeutronBlast': user.username = 'EternalGrey';
+            (this.mode == 1) ? user.pfp = 'stock-1.jpg': user.pfp = 'stock-3.jpg';
+            return user;
+        }
+    }
+}
+</script>

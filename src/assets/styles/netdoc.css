@@ -1,0 +1,14 @@
+/*.netbar {
+    background: rgb(77,182,172);
+    background: linear-gradient(-90deg, rgba(77,182,172,1) 0%, rgba(128,203,196,1) 35%, rgba(178,223,219,1) 100%);
+}*/
+
+.netmsjunread{
+    background-color: #80cbc4;
+}
+
+/* Site BG */
+#app {
+    background-color: #f6f6f6;
+    font-family: 'Mulish', sans-serif;
+}
