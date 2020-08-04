@@ -3,7 +3,7 @@
     <v-app-bar height="60px" src="@/assets/img/stock-2.jpeg">
 
         <!-- Logo -->
-        <v-app-bar-nav-icon class="d-none d-sm-flex">
+        <v-app-bar-nav-icon class="d-none d-sm-flex" href="/">
             <v-img class="ml-9" src="@/assets/img/logo-3.png" height="70px" width="70px">
             </v-img>
         </v-app-bar-nav-icon>
@@ -68,7 +68,7 @@
                     <v-btn text small @click="allRead()">Marcar todo como leído</v-btn>
                     <v-spacer></v-spacer>
 
-                    <v-btn text small>Ver todo</v-btn>
+                    <v-btn text small href="/chat">Ver todo</v-btn>
                 </v-card-actions>
             </v-card>
         </v-menu>
@@ -234,7 +234,7 @@ export default {
             };
 
             if (isNotRead == true) {
-                option.icon = 'mdi-read';
+                option.icon = 'mdi-email-check';
                 option.tooltip = 'Marcar como leído'
 
             } else {

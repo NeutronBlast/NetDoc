@@ -10,6 +10,11 @@ Vue.use(VueRouter)
     name: 'Home',
     component: Home
   },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: () => import('../views/commons/Chat.vue')
+  }
   //{
     //path: '/about',
     //name: 'About',
@@ -21,9 +26,9 @@ Vue.use(VueRouter)
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  //base: '/NetDoc-Live/',
+  //mode: 'history',
+  //base: process.env.BASE_URL,
+  base: '/NetDoc-Live/',
   routes
 })
 

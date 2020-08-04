@@ -7,6 +7,22 @@
     background-color: #80cbc4;
 }
 
+.netmsjchip {
+    height: auto !important;
+    font-size: small;
+}
+
+.netmsjimg {
+    border-radius: 5%;
+    max-width: 200px;
+    max-height: 200px;
+    display: inline-block;
+}
+
+.netmsjsend {
+    height: 70% !important;
+}
+
 /* Site BG */
 #app {
     background-color: #f6f6f6;
