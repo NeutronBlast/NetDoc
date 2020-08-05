@@ -1,6 +1,6 @@
 <template>
 <div>
-    <v-card class="rounded-0" color="grey lighten-5">
+    <v-card class="rounded-0" color="grey lighten-4" flat>
         <v-card-title>
             Mensajes
 
@@ -36,7 +36,7 @@
 
             <v-row no-gutters>
                 <vue-custom-scrollbar :settings="settings">
-                    <v-card class="rounded-0" height="508" color="grey lighten-5" flat>
+                    <v-card class="rounded-0" height="67vh" color="grey lighten-5" flat>
                         <v-list>
                             <v-list-item-group v-for="(item, index) in msg" :key="index">
                                 <v-list-item v-on:click="sendTab" v-bind:class="{netmsjunread: item.isNotRead}" >

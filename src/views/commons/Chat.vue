@@ -1,9 +1,10 @@
 <template>
-<div>
+<div class="netfill">
     <Navigation />
+
     <v-row no-gutters>
         <v-col md="1" cols="12" class="d-none d-md-flex">
-            <v-card class="rounded-0" width="100%">
+            <v-card class="rounded-0" height="92vh" width="100%" flat>
                 <v-container fluid>
                     <v-row>
                         <v-col>
@@ -77,14 +78,13 @@
                     </v-row>
                 </v-container>
             </v-card>
-
         </v-col>
 
         <v-col cols="12" sm="12" md="3">
-            <RecentMessages class="d-none d-md-flex" />
+            <div class="net-pfill">
+                <RecentMessages class="d-none d-md-block" />
+            </div>
         </v-col>
-
-        <!-- PERSON -->
         <v-col cols="12" sm="12" md="8">
             <v-card class="rounded-0 d-block d-sm-block d-md-none d-lg-none d-xl-none" color="teal lighten-5" v-if="currentTab != 'RecentMessages'">
                 <v-card-title>
@@ -160,16 +160,56 @@
                 </v-card-title>
             </v-card>
 
-            <!-- Phone = Dynamic -->
-            <component :tab="currentTab" v-on:message="message" v-bind:is="currentTab" class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
-            </component>
+            <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
+                <component :tab="currentTab" v-on:message="message" v-bind:is="currentTab">
+                </component>
 
-            <!-- PC = Static -->
+                <v-row no-gutters class="d-flex d-sm-flex d-md-none d-lg-none d-xl-none" v-if="currentTab != 'Messages'">
+                    <v-col sm="12">
+                        <v-card color="teal lighten-5">
+                            <v-container>
+                                <v-row no-gutters>
+                                    <v-col>
+                                        <v-btn icon color="teal darken-3">
+                                            <v-icon>mdi-message</v-icon>
+                                        </v-btn>
+                                    </v-col>
+                                    <v-col>
+                                        <v-btn icon color="teal darken-3">
+                                            <v-icon>mdi-account-multiple</v-icon>
+                                        </v-btn>
+
+                                    </v-col>
+                                    <v-col>
+
+                                        <v-btn icon color="teal darken-3">
+                                            <v-icon>mdi-contacts</v-icon>
+                                        </v-btn>
+
+                                    </v-col>
+                                    <v-col>
+
+                                        <v-btn icon color="teal darken-3">
+                                            <v-icon>mdi-tools</v-icon>
+                                        </v-btn>
+                                    </v-col>
+
+                                    <v-col>
+                                        <v-avatar>
+                                            <img :src="require('@/assets/img/stock-1.jpg')">
+                                        </v-avatar>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </div>
+
             <component :is="RecentMessages" class="d-none d-md-block">
             </component>
         </v-col>
     </v-row>
-
 </div>
 </template>
 

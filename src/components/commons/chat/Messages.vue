@@ -2,7 +2,7 @@
 <div>
     <div>
         <vue-custom-scrollbar :settings="settings">
-            <v-card class="rounded-0" height="500" color="grey lighten-4" flat>
+            <v-card class="rounded-0 netchat" height="66vh" color="grey lighten-4" flat>
                 <v-container>
                     <v-row no-gutters class="mb-10" v-for="(item, index) in chat" :key="index">
                         <v-spacer v-if="item.state == true"></v-spacer>
@@ -87,7 +87,7 @@
 
     <!-- Send message -->
 
-    <v-card class="rounded-0">
+    <v-card class="rounded-0" flat>
         <v-container>
             <!-- PC -->
             <v-row no-gutters class="d-none d-md-flex">
