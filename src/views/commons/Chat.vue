@@ -42,26 +42,12 @@
                                     <v-col>
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon large color="teal darken-3" v-bind="attrs" v-on="on">
+                                                <v-btn icon large color="teal darken-3" v-bind="attrs" v-on="on" @click="currentTabPC = 'Contacts'">
                                                     <v-icon>mdi-contacts</v-icon>
                                                 </v-btn>
 
                                             </template>
                                             <span>Contactos</span>
-                                        </v-tooltip>
-                                    </v-col>
-                                </v-row>
-
-                                <v-row>
-                                    <v-col>
-                                        <v-tooltip bottom>
-                                            <template v-slot:activator="{ on, attrs }">
-                                                <v-btn icon large color="teal darken-3" v-bind="attrs" v-on="on">
-                                                    <v-icon>mdi-tools</v-icon>
-                                                </v-btn>
-
-                                            </template>
-                                            <span>Configuración</span>
                                         </v-tooltip>
                                     </v-col>
                                 </v-row>
@@ -186,21 +172,15 @@
                                     </v-col>
                                     <v-col>
 
-                                        <v-btn icon color="teal darken-3">
+                                        <v-btn icon color="teal darken-3" @click="currentTab = 'Contacts'">
                                             <v-icon>mdi-contacts</v-icon>
                                         </v-btn>
 
                                     </v-col>
-                                    <v-col>
-
-                                        <v-btn icon color="teal darken-3">
-                                            <v-icon>mdi-tools</v-icon>
-                                        </v-btn>
-                                    </v-col>
 
                                     <v-col>
                                         <v-avatar class="mt-n1">
-                                            <img :src="require('@/assets/img/stock-1.jpg')">
+                                            <img :src="require('@/assets/img/'+info.pfp)">
                                         </v-avatar>
                                     </v-col>
                                 </v-row>
@@ -220,10 +200,10 @@
 <script>
 // @ is an alias to /src
 import Navigation from '@/components/commons/Navigation.vue'
-import vueCustomScrollbar from 'vue-custom-scrollbar'
 import RecentMessages from '@/components/commons/chat/RecentMessages.vue'
 import Messages from '@/components/commons/chat/Messages.vue'
 import Groups from '@/components/commons/chat/Groups.vue'
+import Contacts from '@/components/commons/chat/Contacts.vue'
 
 import {
     mapState,
@@ -233,10 +213,10 @@ import {
 export default {
     components: {
         Navigation,
-        vueCustomScrollbar,
         RecentMessages,
         Messages,
-        Groups
+        Groups,
+        Contacts,
     },
     data() {
         return {

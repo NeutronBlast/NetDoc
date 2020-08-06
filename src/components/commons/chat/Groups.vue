@@ -5,7 +5,7 @@
             Grupos
             <v-spacer></v-spacer>
             <!-- CREATE GROUP -->
-            <v-dialog v-model="dialog" persistent max-width="600px">
+            <v-dialog v-model="dialog" max-width="600px">
                 <template v-slot:activator="{ on, attrs }">
                     <v-btn color="teal darken-3" fab small v-bind="attrs" v-on="on">
                         <v-icon color="white">mdi-account-multiple-plus</v-icon>
@@ -28,33 +28,33 @@
                                 </v-col>
                             </v-row>
 
-                                <v-card class="mx-auto" flat>
-                                    <v-toolbar color="teal lighten-5" flat>
-                                        <v-toolbar-title class="black--text">Personas</v-toolbar-title>
-                                    </v-toolbar>
+                            <v-card class="mx-auto" flat>
+                                <v-toolbar color="teal lighten-5" flat>
+                                    <v-toolbar-title class="black--text">Personas</v-toolbar-title>
+                                </v-toolbar>
 
-                                    <v-list subheader two-line flat>
-                                        <v-subheader>Selecciona contactos para agregar al chat grupal</v-subheader>
+                                <v-list subheader two-line flat>
+                                    <v-text-field class="mt-6" outlined label="Buscar contactos" prepend-icon="mdi-magnify" color="teal darken-3"></v-text-field>
 
-                                        <v-list-item-group v-model="settings" multiple>
-                                            <v-list-item v-for="(item, index) in contacts" :key="index">
+                                    <v-list-item-group v-model="members" multiple>
+                                        <v-list-item v-for="(item, index) in contacts" :key="index">
 
-                                                <template v-slot:default="{ active }">
+                                            <template v-slot:default="{ active }">
 
-                                                    <v-list-item-action>
-                                                        <v-checkbox :input-value="active" color="teal"></v-checkbox>
-                                                    </v-list-item-action>
-                                                    <v-list-item-avatar>
-                                                        <v-img :src="require('@/assets/img/'+item.avatar)"></v-img>
-                                                    </v-list-item-avatar>
-                                                    <v-list-item-content class="ml-4">
-                                                        <v-list-item-title>{{item.name}}</v-list-item-title>
-                                                    </v-list-item-content>
-                                                </template>
-                                            </v-list-item>
-                                        </v-list-item-group>
-                                    </v-list>
-                                </v-card>
+                                                <v-list-item-action>
+                                                    <v-checkbox :input-value="active" color="teal"></v-checkbox>
+                                                </v-list-item-action>
+                                                <v-list-item-avatar>
+                                                    <v-img :src="require('@/assets/img/'+item.avatar)"></v-img>
+                                                </v-list-item-avatar>
+                                                <v-list-item-content class="ml-4">
+                                                    <v-list-item-title>{{item.name}}</v-list-item-title>
+                                                </v-list-item-content>
+                                            </template>
+                                        </v-list-item>
+                                    </v-list-item-group>
+                                </v-list>
+                            </v-card>
 
                         </v-container>
                     </v-card-text>
@@ -98,7 +98,7 @@
                                             <v-menu offset-y>
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn icon v-bind="attrs" v-on="on">
-                                                        <v-icon>mdi-cogs</v-icon>
+                                                        <v-icon>mdi-dots-vertical</v-icon>
                                                     </v-btn>
                                                 </template>
                                                 <v-list>
@@ -108,6 +108,7 @@
                                                     <v-list-item>
                                                         <v-list-item-title>Silenciar</v-list-item-title>
                                                     </v-list-item>
+                                                    <v-divider></v-divider>
                                                     <v-list-item>
                                                         <v-list-item-title>Salir</v-list-item-title>
                                                     </v-list-item>
@@ -133,6 +134,10 @@
 
 <script>
 import vueCustomScrollbar from 'vue-custom-scrollbar'
+import {
+    mapState,
+    mapMutations
+} from "vuex";
 
 export default {
     components: {
@@ -144,36 +149,17 @@ export default {
             settings: {
                 maxScrollbarLength: 60
             },
+            members: [],
             colors: ['teal darken-3', 'blue darken-3', 'cyan darken-3', 'blue-grey darken-2'],
-            contacts: [{
-                    avatar: 'stock-16.jpg',
-                    name: 'Jean Kowalski'
-                },
-                {
-                    avatar: 'stock-17.jpg',
-                    name: 'Lisa McCleod'
-                },
-                {
-                    avatar: 'stock-18.jpg',
-                    name: 'Michelle Gonzalez'
-                },
-                {
-                    avatar: 'stock-19.jpg',
-                    name: 'Lia Preobrazhensky'
-                },
-                {
-                    avatar: 'stock-20.jpg',
-                    name: 'Ramon Porras'
-                }
-            ],
+
             msg: [{
                     avatar: null,
                     name: 'Technik Dev',
-                    message: '<strong>Leo: </strong>uwu',
+                    message: "<strong>Leo: </strong>:)",
                 }, {
                     avatar: 'stock-15.jpg',
                     name: 'NetDoc OGs',
-                    message: '<strong>Johan: </strong>uwu',
+                    message: '<strong>Johan: </strong>Hands down',
                 }, {
                     avatar: null,
                     name: 'UCAB Allies',
@@ -181,12 +167,12 @@ export default {
                 }, {
                     avatar: 'stock-13.jpg',
                     name: 'Carlos, Andres, Midori, Tú',
-                    message: '<strong>Andres: </strong>uwu',
+                    message: '<strong>Andres: </strong>Lorem ipsum dolor',
                 },
                 {
                     avatar: 'stock-14.jpg',
                     name: 'General',
-                    message: '<strong>Tú: </strong>uwu',
+                    message: '<strong>Tú: </strong>Hello everyone',
                 },
 
             ],
@@ -194,6 +180,8 @@ export default {
     },
 
     computed: {
+        ...mapState(["mode", "contacts"]),
+
         randomColor() {
             return this.colors[Math.floor(Math.random() * this.colors.length)];
         }
