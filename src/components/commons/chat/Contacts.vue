@@ -31,6 +31,10 @@
                                                     </v-btn>
                                                 </template>
                                                 <v-list>
+                                                    <v-list-item @click="$router.push('/profile').catch(()=>{});">
+                                                        <v-list-item-title>Ver perfil</v-list-item-title>
+                                                    </v-list-item>
+                                                    <v-divider></v-divider>
                                                     <v-list-item>
                                                         <v-list-item-title>Eliminar</v-list-item-title>
                                                     </v-list-item>

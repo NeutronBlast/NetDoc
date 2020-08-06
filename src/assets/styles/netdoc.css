@@ -30,8 +30,16 @@
     background-color: #f5f5f5 !important;
 }
 
+.container-2 {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
 /* Site BG */
 #app {
     background-color: #f6f6f6;
     font-family: 'Mulish', sans-serif;
+    font-size: small;
 }

@@ -139,7 +139,6 @@ import {
 } from "vuex";
 
 export default {
-    props: ['currentTab'],
     components: {
         vueCustomScrollbar,
     },

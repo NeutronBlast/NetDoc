@@ -130,7 +130,7 @@
                     </v-list-item>
                     <v-divider></v-divider>
 
-                    <v-list-item>
+                    <v-list-item @click="$router.push('/profile').catch(()=>{});">
                         <v-icon left color="cyan darken-4">mdi-account</v-icon>
                         <v-list-item-content>
                             <v-list-item-title>Perfil</v-list-item-title>

@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     path: '/chat',
     name: 'Chat',
     component: () => import('../views/commons/Chat.vue')
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import('../views/commons/Profile.vue')
   }
   //{
     //path: '/about',
