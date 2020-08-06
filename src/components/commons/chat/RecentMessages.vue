@@ -3,30 +3,28 @@
     <v-card class="rounded-0" color="grey lighten-4" flat>
         <v-card-title>
             Mensajes
-
             <v-spacer></v-spacer>
-
             <v-menu offset-y>
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn v-bind="attrs" v-on="on" color="teal darken-3" depressed fab small>
+                    <v-btn v-bind="attrs" v-on="on" color="teal darken-3" fab small>
                         <v-icon color="white">mdi-tools</v-icon>
                     </v-btn>
                 </template>
                 <v-list>
-                    <v-list-item>
+                    <v-list-item class="netdropdown-item">
                         <v-list-item-title>Chats archivados</v-list-item-title>
                     </v-list-item>
-                    <v-list-item>
+                    <v-list-item class="netdropdown-item">
                         <v-list-item-title>Chats no leídos</v-list-item-title>
                     </v-list-item>
                     <v-divider></v-divider>
-                    <v-list-item>
+                    <v-list-item class="netdropdown-item">
                         <v-list-item-title>Ayuda</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
-
         </v-card-title>
+
         <v-container>
             <v-row no-gutters>
                 <v-col cols="12" sm="12">
