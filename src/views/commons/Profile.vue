@@ -8,7 +8,6 @@
                 <v-card flat>
                     <v-img class="mx-auto" src="@/assets/img/stock-22.jpg" max-width="200px">
                     </v-img>
-
                     <h2 class="text-center">{{info.name}}</h2>
                 </v-card>
             </v-col>
