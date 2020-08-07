@@ -22,36 +22,90 @@
                         </v-list-item>
                     </v-list>
                 </v-card>
-                <vue-custom-scrollbar :settings="settings">
+                <v-card max-width="450" class="mx-auto mt-5">
+                    <v-list>
+                        <v-list-item-title class="ml-3">Otros</v-list-item-title>
+                        <v-divider></v-divider>
+                    </v-list>
+                    <v-virtual-scroll :items="communities" :item-height="50" height="320">
+                        <template v-slot="{ item }">
+                            <v-list-item>
+                                <v-list-item-avatar>
+                                    <v-avatar color="teal" size="56" class="white--text">
+                                        <v-img v-if="item.img" :src="require('@/assets/img/'+item.img)"></v-img>
+                                        <span class="white--text" v-else>{{item.name[0]}}</span>
 
-                    <v-card max-width="450" class="mx-auto mt-5">
-                        <v-list>
-                            <v-list-item-title class="ml-3">Otros</v-list-item-title>
-                            <v-divider></v-divider>
-                            <v-list-item-group v-for="(item, index) in communities" :key="index">
-                                <v-list-item>
-                                    <v-list-item-avatar v-if="!item.avatar">
-                                        <v-avatar color="teal">
-                                            <span class="white--text" v-if="!item.img">{{item.name[0]}}</span>
+                                    </v-avatar>
+                                </v-list-item-avatar>
 
-                                            <v-img v-else :src="require('@/assets/img/'+item.img)"></v-img>
-                                        </v-avatar>
-                                    </v-list-item-avatar>
+                                <v-list-item-content>
+                                    <v-list-item-title>{{ item.name }}</v-list-item-title>
+                                </v-list-item-content>
 
-                                    <v-list-item-content class="mt-n4">
-                                        {{item.name}}
-                                    </v-list-item-content>
-                                </v-list-item>
-                            </v-list-item-group>
+                            </v-list-item>
+                        </template>
+                    </v-virtual-scroll>
+                </v-card>
 
-                        </v-list>
+                <!-- Create community -->
+                <v-dialog v-model="dialog" max-width="600px">
+                    <template v-slot:activator="{ on, attrs }">
+                        <div class="text-center mt-4">
+                            <v-btn block color="teal lighten-4" v-bind="attrs" v-on="on">Crear comunidad</v-btn>
+
+                        </div>
+
+                    </template>
+                    <v-card>
+                        <v-card-title>
+                            <span class="headline">Crear comunidad</span>
+                        </v-card-title>
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" sm="12" md="6">
+                                        <v-text-field label="Nombre*" color="teal darken-3"></v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="12" sm="12" md="6">
+                                        <v-file-input multiple label="Imagen" color="teal darken-3"></v-file-input>
+                                    </v-col>
+                                </v-row>
+                                <v-divider></v-divider>
+
+                                <v-row>
+                                    <v-col cols="12" sm="12">
+                                        <v-radio-group v-model="radioGroup" label="Privacidad">
+                                            <v-radio label="Médicos y pacientes pueden enviar invitación" color="teal" value="1"></v-radio>
+                                            <v-radio v-if="mode == 1" label="Sólo Médicos pueden enviar invitación" value="2" color="teal"></v-radio>
+                                            <v-radio v-else label="Médicos no pueden enviar invitación" value="2" color="teal"></v-radio>
+
+                                        </v-radio-group>
+                                    </v-col>
+                                </v-row>
+
+                                <v-divider></v-divider>
+
+                                <v-row>
+                                    <v-col cols="12" sm="12">
+                                        <v-textarea label="Reglas" color="teal" outlined></v-textarea>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="teal darken-3" text @click="dialog = false">CANCELAR</v-btn>
+                            <v-btn color="teal darken-3" text @click="dialog = false">CREAR</v-btn>
+                        </v-card-actions>
+
                     </v-card>
-                </vue-custom-scrollbar>
 
-                <div class="text-center mt-4">
-                    <v-btn block color="teal lighten-4">Crear comunidad</v-btn>
-                </div>
+                </v-dialog>
+
             </v-col>
+
+            <!-- Categories -->
             <v-col cols="12" sm="12" md="10">
                 <v-card class="mb-5">
                     <v-container fluid>
@@ -124,12 +178,12 @@
                                             <div class="overline mb-4">MEDICINA</div>
                                             <v-tooltip bottom>
                                                 <template v-slot:activator="{ on, attrs }">
-                                                    <v-list-item-title class="headline mb-1" v-bind="attrs" v-on="on">H.I.I</v-list-item-title>
+                                                    <v-list-item-title class="headline mb-1" v-bind="attrs" v-on="on">NORD</v-list-item-title>
 
                                                 </template>
-                                                <span>H.I.I</span>
+                                                <span>NORD</span>
                                             </v-tooltip>
-                                            <v-list-item-subtitle>Investigación acerca de la Hipertensión intracraneal idiopática</v-list-item-subtitle>
+                                            <v-list-item-subtitle>Aliados de la organización nacional para enfermedades raras</v-list-item-subtitle>
                                         </v-list-item-content>
 
                                         <v-list-item-avatar tile size="80" color="grey">
@@ -150,12 +204,12 @@
                                             <div class="overline mb-4">MEDICINA</div>
                                             <v-tooltip bottom>
                                                 <template v-slot:activator="{ on, attrs }">
-                                                    <v-list-item-title class="headline mb-1" v-bind="attrs" v-on="on">H.I.I</v-list-item-title>
+                                                    <v-list-item-title class="headline mb-1" v-bind="attrs" v-on="on">Fliedner Tagesklinik Berlin</v-list-item-title>
 
                                                 </template>
-                                                <span>H.I.I</span>
+                                                <span>Fliedner Tagesklinik Berlin</span>
                                             </v-tooltip>
-                                            <v-list-item-subtitle>Investigación acerca de la Hipertensión intracraneal idiopática</v-list-item-subtitle>
+                                            <v-list-item-subtitle>Médicos pertenecientes a Fliedner Tagesklinik Berlin</v-list-item-subtitle>
                                         </v-list-item-content>
 
                                         <v-list-item-avatar tile size="80" color="grey">
@@ -179,6 +233,10 @@
 
 <script>
 import Navigation from '@/components/commons/Navigation.vue'
+import {
+    mapState,
+    mapMutations
+} from "vuex";
 
 export default {
     components: {
@@ -186,6 +244,8 @@ export default {
     },
     data() {
         return {
+            dialog: false,
+            radioGroup: 1,
             settings: {
                 maxScrollbarLength: 60
             },
@@ -221,6 +281,10 @@ export default {
                 }
             ]
         }
+    },
+    computed: {
+        ...mapState(["mode"]),
+
     }
 }
 </script>
