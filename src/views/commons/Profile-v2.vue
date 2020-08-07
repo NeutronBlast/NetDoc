@@ -24,8 +24,9 @@
                 <div class="panel-body noradius padding-10">
                   <figure class="margin-bottom-10">
                     <!-- image -->
+
                     <v-img
-                      class="img-responsive"
+                      class="img-responsive rounded-circle"
                       :src="require('@/assets/img/'+info.pfp)"
                       alt="John"
                     ></v-img>
@@ -181,7 +182,7 @@
                       <li class="comment">
                         <!-- avatar -->
                         <img
-                          class="avatar"
+                          class="avatar rounded-circle"
                           :src="require('@/assets/img/'+info.pfp)"
                           width="50"
                           height="50"
@@ -229,7 +230,7 @@
                       <li class="comment comment-reply">
                         <!-- avatar -->
                         <img
-                          class="avatar"
+                          class="avatar rounded-circle"
                           src="https://bootdey.com/img/Content/avatar/avatar2.png"
                           width="35"
                           height="35"
@@ -271,7 +272,7 @@
                       <li class="comment comment-reply">
                         <!-- avatar -->
                         <img
-                          class="avatar"
+                          class="avatar rounded-circle"
                           src="https://bootdey.com/img/Content/avatar/avatar3.png"
                           width="35"
                           height="35"
@@ -317,7 +318,7 @@
                       <li class="comment">
                         <!-- avatar -->
                         <img
-                          class="avatar"
+                          class="avatar rounded-circle"
                           :src="require('@/assets/img/'+info.pfp)"
                           width="50"
                           height="50"
@@ -363,7 +364,7 @@
                       <li class="comment comment-reply">
                         <!-- avatar -->
                         <img
-                          class="avatar"
+                          class="avatar rounded-circle"
                           src="https://bootdey.com/img/Content/avatar/avatar5.png"
                           width="35"
                           height="35"
@@ -405,7 +406,7 @@
                       <li class="comment comment-reply">
                         <!-- avatar -->
                         <img
-                          class="avatar"
+                          class="avatar rounded-circle"
                           src="https://bootdey.com/img/Content/avatar/avatar6.png"
                           width="35"
                           height="35"
@@ -749,7 +750,7 @@ export default {
   },
 };
 </script>
-<style type="text/css">
+<style scoped>
 .padding-10 {
   padding: 10px !important;
 }
