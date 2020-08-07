@@ -176,7 +176,7 @@
                     <v-list-item>
                         <v-icon left color="cyan darken-4">mdi-bandage</v-icon>
                         <v-list-item-content>
-                            <v-list-item-title>Enfermedades</v-list-item-title>
+                            <v-list-item-title @click="$router.push('/diseases').catch(()=>{});">Enfermedades</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                     <v-divider></v-divider>
