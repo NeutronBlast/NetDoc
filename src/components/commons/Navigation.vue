@@ -13,12 +13,12 @@
 
         <v-tooltip bottom>
             <template v-slot:activator=" { on, attrs }">
-                <v-btn icon class="mr-2" v-bind="attrs" v-on="on">
+                <v-btn icon class="mr-2" v-bind="attrs" v-on="on" @click="$router.push('/communities').catch(()=>{});">
                     <v-icon>mdi-account-group</v-icon>
                 </v-btn>
 
             </template>
-            <span>Grupos</span>
+            <span>Comunidades</span>
         </v-tooltip>
 
         <!-- Messages -->

@@ -19,6 +19,11 @@ Vue.use(VueRouter)
     path: '/profile',
     name: 'Profile',
     component: () => import('../views/commons/Profile.vue')
+  },
+  {
+    path: '/communities',
+    name: 'Communities',
+    component: () => import('../views/commons/Communities.vue')
   }
   //{
     //path: '/about',
