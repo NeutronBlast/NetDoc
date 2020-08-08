@@ -30,6 +30,11 @@ const routes = [
     path: '/feed',
     name: 'feed',
     component: () => import('../views/commons/Posts.vue')
+  },
+  {
+    path: '/diseases',
+    name: 'Searcher',
+    component: () => import('../views/commons/DiseaseSearcher.vue')
   }
   //{
   //path: '/about',
