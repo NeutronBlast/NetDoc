@@ -14,12 +14,13 @@
                             <v-list-item-title class="headline">{{item.title}}</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
+                    <v-container>
+                    <v-row v-if="item.img">
+                        <v-img :src="require('@/assets/img/'+item.img)" :lazy-src="require('@/assets/img/'+item.img)" class="grey lighten-2 mx-auto" max-height="300"></v-img>
+                    </v-row>
+                    </v-container>
+
                     <v-row>
-                        <v-col cols="2">
-                            <span v-if="item.img">
-                                <v-img :src="require('@/assets/img/'+item.img)" :lazy-src="require('@/assets/img/'+item.img)" class="grey lighten-2 ml-3"></v-img>
-                            </span>
-                        </v-col>
                         <v-col>
                             <v-card-text class="text-justify">{{item.content}}</v-card-text>
                         </v-col>
@@ -31,7 +32,7 @@
                     </v-card-actions>
                 </v-card>
             </v-col>
-            
+
         </v-row>
     </v-container>
 
