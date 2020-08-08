@@ -50,7 +50,7 @@
                 </v-col>
 
                 <v-col cols="12" sm="12" md="6">
-                    <v-card class="mx-auto" outlined>
+                    <v-card class="mx-auto mt-5" outlined>
                         <v-list-item three-line>
                             <v-list-item-content>
                                 <v-tooltip bottom>
@@ -135,7 +135,7 @@
                                 </v-list-item>
 
                                 <v-card-actions>
-                                    <v-btn text color="teal darken-3" @click="$router.push('research')">Ver investigación</v-btn>
+                                    <v-btn text color="teal darken-3">Ver investigación</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-col>

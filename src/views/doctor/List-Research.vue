@@ -1,10 +1,10 @@
 <template>
-  <div>
+<div>
     <Navigation />
     <div class="container-2">
         <v-row>
             <v-col cols="12" sm="12" md="3">
-                
+
                 <v-card max-width="450" class="mx-auto">
                     <v-list three-line>
                         <v-list-item-title class="ml-3">MIS INVESTIGACIONES</v-list-item-title>
@@ -46,6 +46,76 @@
                     </v-virtual-scroll>
                 </v-card>
 
+                <v-dialog v-model="dialog" max-width="600px">
+                    <template v-slot:activator="{ on, attrs }">
+                        <div class="text-center mt-4">
+                            <v-btn block color="teal lighten-4" v-bind="attrs" v-on="on">Iniciar nueva investigación</v-btn>
+
+                        </div>
+
+                    </template>
+                    <v-card>
+                        <v-card-title>
+                            <span class="headline">Iniciar nueva investigación</span>
+                        </v-card-title>
+                        <v-card-text>
+                            <v-container>
+                                <v-row>
+                                    <v-col cols="12" sm="12" md="6">
+                                        <v-text-field label="Nombre*" color="teal darken-3"></v-text-field>
+                                    </v-col>
+
+                                    <v-col cols="12" sm="12" md="6">
+                                        <v-autocomplete label="Enfermedad*" color="teal darken-3" :items="research" item-value="id" item-text="name"></v-autocomplete>
+                                    </v-col>
+                                </v-row>
+
+                                <v-row>
+                                    <v-col cols="12" sm="12" md="6">
+                                        <v-menu ref="menu" v-model="menu" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="290px">
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-text-field color="teal darken-3" v-model="date_1" label="Fecha de Inicio*" readonly v-bind="attrs" v-on="on"></v-text-field>
+                                            </template>
+                                            <v-date-picker color="teal darken-3" v-model="date_1" no-title scrollable>
+                                                <v-spacer></v-spacer>
+                                                <v-btn text color="teal darken-3" @click="menu = false">Cancel</v-btn>
+                                                <v-btn text color="teal darken-3" @click="$refs.menu.save(date); menu = false">OK</v-btn>
+                                            </v-date-picker>
+                                        </v-menu>
+                                    </v-col>
+
+                                    <v-col cols="12" sm="12" md="6">
+                                        <v-menu ref="menu" v-model="menu_2" :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y min-width="290px">
+                                            <template v-slot:activator="{ on, attrs }">
+                                                <v-text-field color="teal darken-3" v-model="date_2" label="Fecha Fin" readonly v-bind="attrs" v-on="on"></v-text-field>
+                                            </template>
+                                            <v-date-picker color="teal darken-3" v-model="date_2" no-title scrollable>
+                                                <v-spacer></v-spacer>
+                                                <v-btn text color="teal darken-3" @click="menu_2 = false">Cancel</v-btn>
+                                                <v-btn text color="teal darken-3" @click="$refs.menu.save(date)">OK</v-btn>
+                                            </v-date-picker>
+                                        </v-menu>
+                                    </v-col>
+                                </v-row>
+
+                                <v-divider></v-divider>
+
+                                <v-row>
+                                    <v-col cols="12" sm="12">
+                                        <v-textarea label="Descripción" color="teal" outlined></v-textarea>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="teal darken-3" text @click="dialog = false">CANCELAR</v-btn>
+                            <v-btn color="teal darken-3" text @click="dialog = false">CREAR</v-btn>
+                        </v-card-actions>
+
+                    </v-card>
+
+                </v-dialog>
             </v-col>
 
             <v-col cols="12" sm="12" md="9">
@@ -61,7 +131,7 @@
                                             <div class="overline mb-4">{{res.type}}</div>
                                             <v-tooltip bottom>
                                                 <template v-slot:activator="{ on, attrs }">
-                                                    <v-list-item-title class="headline mb-1" v-bind="attrs" v-on="on">{{res.name}}</v-list-item-title>
+                                                    <v-list-item-title class="mb-1" v-bind="attrs" v-on="on"><strong>{{res.name}}</strong></v-list-item-title>
                                                 </template>
                                                 <span>{{res.name}}</span>
                                             </v-tooltip>
@@ -85,7 +155,7 @@
             </v-col>
         </v-row>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -95,8 +165,14 @@ export default {
     components: {
         Navigation,
     },
-    data(){
-        return{
+    data() {
+        return {
+            date: new Date().toISOString().substr(0, 10),
+            date_1: null,
+            date_2: null,
+            menu: false,
+            menu_2: false,
+            dialog: false,
             research: [{
                     id: '1',
                     type: 'INVESTIGACIÓN',
@@ -167,7 +243,7 @@ export default {
                     description: 'Descubren marcadores genéticos para luchar contra una enfermedad gastrointestinal poco estudiada',
                     img: 'stock-110.jpg',
                 }
-                
+
             ],
             f_research: [{
                     img: 'stock-102.jpg',

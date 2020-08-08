@@ -29,12 +29,12 @@ const routes = [
   {
     path: '/list-research',
     name: 'List-Research',
-    component: () => import('../views/commons/List-Research.vue')
+    component: () => import('../views/doctor/List-Research.vue')
   },
   {
     path: '/research',
     name: 'Research',
-    component: () => import('../views/commons/Research.vue')
+    component: () => import('../views/doctor/Research.vue')
   },
   {
     path: '/profilej',
