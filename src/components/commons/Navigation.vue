@@ -147,7 +147,7 @@
                     <!-- Exclusive views -->
                     <div v-if="mode == 1">
                         <v-divider></v-divider>
-                        <v-list-item>
+                        <v-list-item @click="$router.push('/list-research').catch(()=>{});">
                             <v-icon left color="cyan darken-4">mdi-account-search</v-icon>
                             <v-list-item-content>
                                 <v-list-item-title>Investigaciones</v-list-item-title>
