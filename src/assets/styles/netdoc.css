@@ -12,6 +12,23 @@
     width: 100%;
 }
 
+.netdisease{
+    background-color: #f6f6f6;
+}
+
+.netsearch-title{
+    color: #616161 !important;
+    font-size: 30px !important;
+}
+
+.netsearch-subtitle{
+    color: #4db6ac !important
+}
+
+.v-parallax__image{
+    opacity: 0.3 !important;
+}
+
 .netfill{
     min-height: 100vh;
 }
