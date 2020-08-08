@@ -25,6 +25,21 @@ const routes = [
     path: '/communities',
     name: 'Communities',
     component: () => import('../views/commons/Communities.vue')
+  },
+  {
+    path: '/list-research',
+    name: 'List-Research',
+    component: () => import('../views/commons/List-Research.vue')
+  },
+  {
+    path: '/research',
+    name: 'Research',
+    component: () => import('../views/commons/Research.vue')
+  },
+  {
+    path: '/profilej',
+    name: 'Profilej',
+    component: () => import('../views/commons/Profile-v2-1.vue')
   }
   //{
   //path: '/about',
