@@ -27,6 +27,11 @@ const routes = [
     component: () => import('../views/commons/Communities.vue')
   },
   {
+    path: '/feed',
+    name: 'feed',
+    component: () => import('../views/commons/Posts.vue')
+  },
+  {
     path: '/diseases',
     name: 'Searcher',
     component: () => import('../views/commons/DiseaseSearcher.vue')
