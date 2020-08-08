@@ -42,11 +42,6 @@ const routes = [
     component: () => import('../views/commons/Profile-v2-1.vue')
   },
   {
-    path: '/feed',
-    name: 'feed',
-    component: () => import('../views/commons/Posts.vue')
-  },
-  {
     path: '/diseases',
     name: 'Searcher',
     component: () => import('../views/commons/DiseaseSearcher.vue')
