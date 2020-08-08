@@ -33,7 +33,8 @@ export default new Vuex.Store({
   mutations: {
     setMode(state,mode){
       state.mode = mode;
-    }
+    },
+    
   },
   actions: {
   },

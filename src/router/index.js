@@ -18,8 +18,7 @@ const routes = [
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import('../views/commons/Profile-v2.vue')
-    //component: () => import('../views/commons/Profile.vue')
+    component: () => import('../views/commons/Profile.vue')
   },
   {
     path: '/communities',
@@ -35,11 +34,6 @@ const routes = [
     path: '/research',
     name: 'Research',
     component: () => import('../views/doctor/Research.vue')
-  },
-  {
-    path: '/profilej',
-    name: 'Profilej',
-    component: () => import('../views/commons/Profile-v2-1.vue')
   },
   {
     path: '/diseases',

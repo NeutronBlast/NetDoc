@@ -35,7 +35,7 @@
                                                     </v-btn>
                                                 </template>
                                                 <v-list>
-                                                    <v-list-item @click="$router.push('/profilej').catch(()=>{});" >
+                                                    <v-list-item @click="$router.push('/profile').catch(()=>{});" >
                                                         <v-list-item-title>Ver perfil</v-list-item-title>
                                                     </v-list-item>
                                                 </v-list>
