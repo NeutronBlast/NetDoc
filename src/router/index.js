@@ -49,7 +49,11 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import('../views/commons/Register.vue')
-
+  },
+  {
+    path: '/patients',
+    name: 'Patients',
+    component: () => import('../views/doctor/Patients.vue')
   }
   //{
   //path: '/about',

@@ -154,7 +154,7 @@
                             </v-list-item-content>
                         </v-list-item>
 
-                        <v-list-item>
+                        <v-list-item @click="$router.push('/patients').catch(()=>{});">
                             <v-icon left color="cyan darken-4">mdi-medical-bag</v-icon>
                             <v-list-item-content>
                                 <v-list-item-title>Pacientes</v-list-item-title>
