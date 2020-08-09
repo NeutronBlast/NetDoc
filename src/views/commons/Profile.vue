@@ -29,7 +29,7 @@
                                 <h3 class="mb-2">Resumen</h3>
                                 <v-icon color="teal darken-3" left>mdi-doctor</v-icon> Médico cardiólogo
                                 <br><br>
-                                <v-icon color="teal darken-3" left>mdi-map-marker</v-icon>Memphis, USA
+                                <v-icon color="teal darken-3" left>mdi-map-marker</v-icon>Memphis, TN, USA
                                 <br><br>
                                 <v-icon color="teal darken-3" left>mdi-hospital</v-icon>Saint Francis Hospital
                                 <br><br>

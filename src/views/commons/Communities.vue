@@ -158,7 +158,7 @@
                                                 </template>
                                                 <span>H.I.I</span>
                                             </v-tooltip>
-                                            <v-list-item-subtitle>Investigación acerca de la Hipertensión intracraneal idiopática</v-list-item-subtitle>
+                                            <v-list-item-subtitle>Grupo para compartir experiencias sobre la Hipertensión intracraneal idiopática</v-list-item-subtitle>
                                         </v-list-item-content>
 
                                         <v-list-item-avatar tile size="80" color="grey">
@@ -209,7 +209,7 @@
                                                 </template>
                                                 <span>Fliedner Tagesklinik Berlin</span>
                                             </v-tooltip>
-                                            <v-list-item-subtitle>Médicos pertenecientes a Fliedner Tagesklinik Berlin</v-list-item-subtitle>
+                                            <v-list-item-subtitle>Pacientes que han visitado el hospital Fliedner Tagesklinik Berlin</v-list-item-subtitle>
                                         </v-list-item-content>
 
                                         <v-list-item-avatar tile size="80" color="grey">
