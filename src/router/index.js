@@ -39,6 +39,17 @@ const routes = [
     path: '/diseases',
     name: 'Searcher',
     component: () => import('../views/commons/DiseaseSearcher.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/commons/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/commons/Register.vue')
+
   }
   //{
   //path: '/about',

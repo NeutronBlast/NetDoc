@@ -110,14 +110,14 @@
                 <v-list-item-group color="teal">
                     <v-list-item>
                         <v-icon left color="cyan darken-4">mdi-login</v-icon>
-                        <v-list-item-content>
+                        <v-list-item-content @click="$router.push('/login').catch(()=>{})">
                             <v-list-item-title>Login</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
 
                     <v-list-item>
                         <v-icon left color="cyan darken-4">mdi-account-plus</v-icon>
-                        <v-list-item-content>
+                        <v-list-item-content @click="$router.push('/register').catch(()=>{})">
                             <v-list-item-title>Registro</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>

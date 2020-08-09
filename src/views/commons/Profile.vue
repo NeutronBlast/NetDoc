@@ -24,6 +24,24 @@
 
                         <v-divider></v-divider>
 
+                        <v-row v-if="mode==1">
+                            <v-col cols="12" sm="12">
+                                <h3 class="mb-2">Resumen</h3>
+                                <v-icon color="teal darken-3" left>mdi-doctor</v-icon> Médico cardiólogo
+                                <br><br>
+                                <v-icon color="teal darken-3" left>mdi-map-marker</v-icon>Memphis, USA
+                                <br><br>
+                                <v-icon color="teal darken-3" left>mdi-hospital</v-icon>Saint Francis Hospital
+                                <br><br>
+                                <v-icon color="teal darken-3" left>mdi-currency-usd</v-icon>100-1000
+                                <br><br>
+                                <v-icon color="teal darken-3" left>mdi-calendar</v-icon>Lunes a Viernes
+                                <br><br>
+                                <v-icon color="teal darken-3" left>mdi-clock</v-icon>8:00 AM - 5:00 PM
+                                <br><br>
+                            </v-col>
+                        </v-row>
+
                         <v-row>
                             <v-col cols="12" sm="12">
                                 <h3 class="mb-2">Otras redes</h3>
@@ -38,10 +56,10 @@
                         <v-row>
                             <v-col cols="12" sm="12">
                                 <h3 class="mb-2">Acciones</h3>
-                                <v-btn block text outlined color="teal" @click="$router.push('/chat').catch(()=>{})">
+                                <v-btn block text outlined class="mb-2" color="teal" @click="$router.push('/chat').catch(()=>{})">
                                     <v-icon left>mdi-message</v-icon>Enviar mensaje
                                 </v-btn>
-                                <v-btn block text outlined color="teal">
+                                <v-btn block text outlined class="mb-2" color="teal">
                                     <v-icon left>mdi-account-plus</v-icon>Añadir a contactos
                                 </v-btn>
                                 <v-btn block text outlined color="teal">
