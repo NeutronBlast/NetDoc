@@ -2,7 +2,7 @@
 <div class="netfill">
     <v-row no-gutters>
 
-        <v-col cols="12" sm="12" md="7" class="mt-4">
+        <v-col cols="12" sm="12" md="7" class="mt-1">
             <v-img class="mx-auto netlogo" src="@/assets/logo.png" height="150" width="150"></v-img>
 
             <v-container>
@@ -28,7 +28,7 @@
                     </v-col>
 
                     <v-col cols="12" sm="12" md="6">
-                        <v-text-field label="Segundo Nombre" clearable placeholder="Segundo Nombre" color="teal darken-3" outlined></v-text-field>
+                        <v-text-field label="Primer Apellido" clearable placeholder="Primer Apellido" color="teal darken-3" outlined></v-text-field>
                     </v-col>
 
                     <v-col cols="12" sm="12" md="6">
@@ -41,6 +41,10 @@
                         <v-select label="Ciudad" color="teal darken-3" outlined>
 
                         </v-select>
+                    </v-col>
+
+                    <v-col cols="12" sm="12" class="mt-n9">
+                        <v-switch v-model="switch1" color="teal darken-3" :label="`¿Eres profesional de la salud?: ${switch1 == true ? 'Si' : 'No'}`"></v-switch>
                     </v-col>
 
                     <v-btn class="mx-auto" rounded outlined color="teal darken-3" block @click="$router.push('/').catch(()=>{})">REGISTRARSE</v-btn>
@@ -71,6 +75,7 @@ export default {
             checkbox: true,
             show1: false,
             show2: false,
+            switch1: false,
         }
     }
 }
