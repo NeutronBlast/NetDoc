@@ -14,7 +14,7 @@ This prototype shows a visual demo of the following modules
 | Profile/Edit profile |                                                             |
 | Investigations       | Discover and take part of investigations from other doctors |
 | Patients             | Manage patients and their medical history                   |
-| Disease searcher     | Discover everything related rare illnesses                  |
+| Disease searcher     | Discover everything related any rare illness                |
 
 ## Built with
 1. [Vue JS](https://vuejs.org/v2/guide/)
