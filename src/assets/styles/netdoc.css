@@ -12,6 +12,16 @@
     width: 100%;
 }
 
+.netglink{
+    font-size: large;
+    color: teal !important;
+}
+
+.netgtitle{
+    font-size: large;
+    font-weight: bold;
+}
+
 .netlogo:hover{
     opacity: 0.6;
 }

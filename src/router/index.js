@@ -21,6 +21,11 @@ const routes = [
     component: () => import('../views/commons/Profile.vue')
   },
   {
+    path: '/community',
+    name: 'Community',
+    component: () => import('../views/commons/Community.vue')
+  },
+  {
     path: '/communities',
     name: 'Communities',
     component: () => import('../views/commons/Communities.vue')
@@ -68,6 +73,9 @@ const routes = [
 const router = new VueRouter({
   //mode: 'history',
   //base: process.env.BASE_URL,
+  scrollBehavior() {
+    document.getElementById('app').scrollIntoView();
+  },
   base: '/NetDoc-Live/',
   routes
 })

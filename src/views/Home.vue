@@ -4,42 +4,8 @@
     <div class="container-2">
         <v-row>
             <v-col cols="12" sm="12" md="2">
-                <h3 class="text-center mb-3">COMUNIDADES</h3>
-                <v-card max-width="450" class="mx-auto">
-                    <v-list>
-                        <v-list-item-title class="ml-3">Administradas</v-list-item-title>
-                        <v-divider></v-divider>
-                        <v-list-item-group>
-                            <v-list-item>
-                                <v-list-item-avatar>
-                                    <v-avatar color="teal">
-                                        <span class="white--text">S</span>
-                                    </v-avatar>
-                                </v-list-item-avatar>
-                                <v-list-item-content class="mt-n4">Sauer LLC</v-list-item-content>
-                            </v-list-item>
-                        </v-list-item-group>
-                    </v-list>
-                </v-card>
-                <vue-custom-scrollbar :settings="settings">
-                    <v-card max-width="450" class="mx-auto mt-5">
-                        <v-list>
-                            <v-list-item-title class="ml-3">Otros</v-list-item-title>
-                            <v-divider></v-divider>
-                            <v-list-item-group v-for="(item, index) in communities" :key="index">
-                                <v-list-item>
-                                    <v-list-item-avatar v-if="!item.avatar">
-                                        <v-avatar color="teal">
-                                            <span class="white--text" v-if="!item.img">{{item.name[0]}}</span>
-                                            <v-img v-else :src="require('@/assets/img/'+item.img)"></v-img>
-                                        </v-avatar>
-                                    </v-list-item-avatar>
-                                    <v-list-item-content class="mt-n4">{{item.name}}</v-list-item-content>
-                                </v-list-item>
-                            </v-list-item-group>
-                        </v-list>
-                    </v-card>
-                </vue-custom-scrollbar>
+                <Shorcuts />
+
             </v-col>
             <v-col cols="12" sm="12" md="10">
                 <v-card class="mb-5">
@@ -75,7 +41,8 @@
                             </v-avatar>
                         </v-list-item-avatar>
                         <v-list-item-content>
-                            <v-list-item-title class="headline">{{item.title}} > <a href="#" class="teal--text">{{item.group}}</a></v-list-item-title>
+                            <v-list-item-title class="netgtitle">{{item.title}} > <router-link to="community" class="teal--text netglink">{{item.group}}</router-link>
+                            </v-list-item-title>
                             <v-list-item-subtitle>Por {{item.name}}</v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
@@ -93,6 +60,7 @@
                     <v-card-actions>
                         <v-spacer></v-spacer>
                         <v-btn outlined color="teal" class="mb-3">Ir a Post</v-btn>
+                        <v-btn outlined color="teal" class="mb-3" @click="$router.push('/profile').catch(()=>{})">Ir a Perfil</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -104,7 +72,7 @@
 <script>
 // @ is an alias to /src
 import Navigation from '@/components/commons/Navigation.vue'
-import vueCustomScrollbar from 'vue-custom-scrollbar'
+import Shorcuts from '@/components/commons/communities/Shorcuts.vue'
 import {
     mapState,
     mapMutations
@@ -114,7 +82,7 @@ export default {
     name: 'Home',
     components: {
         Navigation,
-        vueCustomScrollbar,
+        Shorcuts,
     },
     data() {
         return {
@@ -126,22 +94,7 @@ export default {
                 picture: null,
             },
             items: ["Sauer LLC", "Lang Group", "Kuphal-Hane", "Murazik Group"],
-            settings: {
-                maxScrollbarLength: 60,
-            },
-            communities: [{
-                    img: null,
-                    name: "Lang Group",
-                },
-                {
-                    img: "stock-30.jpg",
-                    name: "Kuphal-Hane",
-                },
-                {
-                    img: "stock-31.jpg",
-                    name: "Murazik Group",
-                },
-            ],
+
             posts: [{
                     img: null,
                     avatar: "stock-16.jpg",
@@ -200,6 +153,8 @@ export default {
                 content: this.post.content,
                 avatar: this.info().pfp
             })
+
+            this.clear();
         }
     },
     computed: {
