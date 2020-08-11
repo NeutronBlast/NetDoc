@@ -1,13 +1,13 @@
 <template>
 <div>
     <v-card flat>
-        <v-toolbar src="@/assets/img/stock-38.jpg" color="primary" dark extended flat height="200px" class="d-flex flex-row-reverse align-end">
+        <v-toolbar src="@/assets/img/stock-38.jpg" color="teal" dark extended flat height="200px" class="d-flex flex-row-reverse align-end">
             <v-row style="align-self:end" no-gutters class="mb-4">
                 <!-- Options -->
                 <v-col cols="12" sm="12">
                     <v-menu offset-y>
                         <template v-slot:activator="{ on, attrs }">
-                            <v-btn class="mr-2" color="teal" dark v-bind="attrs" v-on="on">
+                            <v-btn class="mr-2" color="teal darken-3" dark v-bind="attrs" v-on="on">
                                 <v-icon left>mdi-check</v-icon> Miembro
                             </v-btn>
                         </template>

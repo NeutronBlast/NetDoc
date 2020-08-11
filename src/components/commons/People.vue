@@ -1,7 +1,7 @@
 <template>
 <div>
     <v-card flat>
-        <v-toolbar color="teal darken-3" flat>
+        <v-toolbar color="teal" flat>
             <v-toolbar-title class="white--text">Invitar</v-toolbar-title>
         </v-toolbar>
 
