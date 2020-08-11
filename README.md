@@ -17,8 +17,8 @@ This prototype shows a visual demo of the following modules
 | Disease searcher     | Discover everything related rare illnesses                  |
 
 ## Built with
-[Vue JS](https://vuejs.org/v2/guide/)
-[Vuetify JS](https://vuetifyjs.com/en/getting-started/quick-start/)
+1. [Vue JS](https://vuejs.org/v2/guide/)
+2. [Vuetify JS](https://vuetifyjs.com/en/getting-started/quick-start/)
 
 ## Local project setup
 
