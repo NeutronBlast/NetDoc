@@ -5,47 +5,7 @@
         <v-row>
             <v-col cols="12" sm="12" md="2">
                 <v-text-field outlined label="Buscar comunidad" prepend-icon="mdi-magnify" color="teal darken-3"></v-text-field>
-                <v-card max-width="450" class="mx-auto">
-                    <v-list three-line>
-                        <v-list-item-title class="ml-3">Administradas</v-list-item-title>
-                        <v-divider></v-divider>
-                        <v-list-item>
-                            <v-list-item-avatar>
-                                <v-avatar color="teal">
-                                    <span class="white--text">S</span>
-                                </v-avatar>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content class="mt-n4">
-                                Sauer LLC
-                            </v-list-item-content>
-                        </v-list-item>
-                    </v-list>
-                </v-card>
-                <v-card max-width="450" class="mx-auto mt-5">
-                    <v-list>
-                        <v-list-item-title class="ml-3">Otros</v-list-item-title>
-                        <v-divider></v-divider>
-                    </v-list>
-                    <v-virtual-scroll :items="communities" :item-height="50" height="320">
-                        <template v-slot="{ item }">
-                            <v-list-item>
-                                <v-list-item-avatar>
-                                    <v-avatar color="teal" size="56" class="white--text">
-                                        <v-img v-if="item.img" :src="require('@/assets/img/'+item.img)"></v-img>
-                                        <span class="white--text" v-else>{{item.name[0]}}</span>
-
-                                    </v-avatar>
-                                </v-list-item-avatar>
-
-                                <v-list-item-content>
-                                    {{ item.name }}
-                                </v-list-item-content>
-
-                            </v-list-item>
-                        </template>
-                    </v-virtual-scroll>
-                </v-card>
+                    <Shorcuts />
 
                 <!-- Create community -->
                 <v-dialog v-model="dialog" max-width="600px">
@@ -88,6 +48,7 @@
 
                                 <v-row>
                                     <v-col cols="12" sm="12">
+                                        <v-textarea label="Descripción" color="teal" outlined></v-textarea>
                                         <v-textarea label="Reglas" color="teal" outlined></v-textarea>
                                     </v-col>
                                 </v-row>
@@ -116,16 +77,10 @@
                                 <v-hover v-slot:default="{ hover }">
 
                                     <v-card flat tile class="d-flex">
-                                        <v-img :src="require('@/assets/img/'+item.src)" :lazy-src="require('@/assets/img/'+item.src)" aspect-ratio="1" class="grey lighten-2">
-                                            <template v-slot:placeholder>
-                                                <v-row class="fill-height ma-0" align="center" justify="center">
-                                                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                                                </v-row>
-                                            </template>
+                                        <v-img :src="require('@/assets/img/'+item.src)">
                                             <v-expand-transition>
                                                 <div v-if="hover" class="d-flex transition-fast-in-fast-out teal v-card--reveal display-3 white--text" style="height: 100%;">
                                                     <small>{{item.categoria}}</small>
-
                                                 </div>
                                             </v-expand-transition>
                                         </v-img>
@@ -233,6 +188,7 @@
 
 <script>
 import Navigation from '@/components/commons/Navigation.vue'
+import Shorcuts from '@/components/commons/communities/Shorcuts.vue'
 import {
     mapState,
     mapMutations
@@ -241,6 +197,7 @@ import {
 export default {
     components: {
         Navigation,
+        Shorcuts
     },
     data() {
         return {

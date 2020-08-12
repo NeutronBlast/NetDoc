@@ -24,7 +24,7 @@
         <!-- Messages -->
         <v-menu offset-y transition="scale-transition" :close-on-content-click="false">
             <template v-slot:activator="{ on, attrs }">
-                <v-btn icon v-on="on" v-bind="attrs">
+                <v-btn icon v-on="on" v-bind="attrs" class="mr-1">
                     <v-badge color="red" :content="nunreads" v-if="nunreads > 0">
                         <v-icon>mdi-message</v-icon>
                     </v-badge>
@@ -75,7 +75,7 @@
 
         <v-tooltip bottom>
             <template v-slot:activator="{ on, attrs }">
-                <v-btn icon class="mr-2" v-bind="attrs" v-on="on">
+                <v-btn icon class="mr-2" v-bind="attrs" v-on="on" @click="$router.push('/help').catch(()=>{});">
                     <v-icon>mdi-help</v-icon>
                 </v-btn>
 
@@ -124,7 +124,7 @@
 
                     <v-list-item>
                         <v-icon left color="cyan darken-4">mdi-lock</v-icon>
-                        <v-list-item-content>
+                        <v-list-item-content @click="$router.push('/recovery').catch(()=>{})">
                             <v-list-item-title>Recuperación</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -134,13 +134,6 @@
                         <v-icon left color="cyan darken-4">mdi-account</v-icon>
                         <v-list-item-content>
                             <v-list-item-title>Perfil</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                    <v-list-item>
-                        <v-icon left color="cyan darken-4">mdi-tools</v-icon>
-                        <v-list-item-content>
-                            <v-list-item-title>Configuración</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
 
@@ -158,16 +151,6 @@
                             <v-icon left color="cyan darken-4">mdi-medical-bag</v-icon>
                             <v-list-item-content>
                                 <v-list-item-title>Pacientes</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-                    </div>
-
-                    <div v-else>
-                        <v-divider></v-divider>
-                        <v-list-item>
-                            <v-icon left color="cyan darken-4">mdi-hospital</v-icon>
-                            <v-list-item-content>
-                                <v-list-item-title>Clínicas</v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
                     </div>

@@ -142,6 +142,11 @@ export default {
     components: {
         vueCustomScrollbar,
     },
+
+    created(){
+        this.scrollToEnd();
+    },
+
     data() {
         return {
             settings: {

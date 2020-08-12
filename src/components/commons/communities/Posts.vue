@@ -7,7 +7,7 @@
                 <v-col cols="12" sm="12">
                     <v-menu offset-y>
                         <template v-slot:activator="{ on, attrs }">
-                            <v-btn class="mr-2" color="teal darken-3" dark v-bind="attrs" v-on="on">
+                            <v-btn class="mr-2" color="teal" dark v-bind="attrs" v-on="on">
                                 <v-icon left>mdi-check</v-icon> Miembro
                             </v-btn>
                         </template>
