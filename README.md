@@ -11,6 +11,7 @@ This prototype shows a visual demo of the following modules
 | Discover communities | Recommendations of communities for you to join              |
 | Chat                 | Send direct messages to other users, create group chats     |
 | Login/Register       |                                                             |
+| Password recovery    |                                                             |
 | Profile/Edit profile |                                                             |
 | Investigations       | Discover and take part of investigations from other doctors |
 | Patients             | Manage patients and their medical history                   |
